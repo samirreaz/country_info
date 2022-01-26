@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  List<Map<String, dynamic>> continents = [
+    {'name': 'Africa', 'img': 'assets/images/Africa.jpeg'},
+    {'name': 'Antarctica', 'img': 'assets/images/Antarctica.jpeg'},
+    {'name': 'Asia', 'img': 'assets/images/Asia.jpeg'},
+    {'name': 'Australia', 'img': 'assets/images/Australia.jpeg'},
+    {'name': 'North Amrica', 'img': 'assets/images/north_amrica.jpeg'},
+    {'name': 'South America', 'img': 'assets/images/south_america.jpeg'},
+    {'name': 'Europe', 'img': 'assets/images/Europe.jpeg'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,30 +43,36 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: GridView.builder(
               padding: EdgeInsets.only(
+                top: 10,
                 left: 10,
                 right: 10,
                 bottom: 10,
               ),
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
+              itemCount: continents.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
                 mainAxisSpacing: 10,
               ),
-              itemBuilder: (context, index) => Card(
-                child: GridTile(
-                  footer: Container(
-                    height: 50,
-                    color: Colors.green,
-                  ),
-                  child: Container(
-                    color: Color(0x3F5EFB),
-                    child: Image.asset(
-                      'assets/images/asia.png',
+              itemBuilder: (context, index) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  image: DecorationImage(
                       fit: BoxFit.cover,
+                      image: AssetImage(continents[index]['img'])),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
                     ),
-                  ),
+                  ],
                 ),
+                // child: Image.asset(
+                //   ,
+                //   fit: BoxFit.cover,
+                // ),
               ),
             ),
           ),
@@ -64,8 +80,21 @@ class HomeScreen extends StatelessWidget {
             flex: 3,
             child: ListView.builder(
               itemBuilder: (context, index) => Card(
-                child: ListTile(
-                  title: Text('item'),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/Asia.jpeg')),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.white.withOpacity(.5),
+                        Colors.black,
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                  height: 200,
                 ),
               ),
             ),
