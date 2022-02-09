@@ -120,7 +120,12 @@ class HomeScreen extends StatelessWidget {
                         Text(
                           'Capital City: ${countryList[index].countryCapital}',
                           style: TextStyle(color: Colors.black54, fontSize: 16),
-                        )
+                        ),
+                        // Text(
+                        //   'Population: ${countryList[index].countryPopulation}',
+                        //   style: TextStyle(color: Colors.black54, fontSize: 16),
+                        //
+                        // ),
                       ],
                     ),
                     height: 50,
