@@ -1,3 +1,5 @@
+import 'package:country_info/models/country_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -79,22 +81,61 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             flex: 3,
             child: ListView.builder(
+              itemCount: countryList.length,
               itemBuilder: (context, index) => Card(
                 child: Container(
+                  margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/Asia.jpeg')),
-                    gradient: LinearGradient(
+                        fit: BoxFit.cover,
+                        image: AssetImage(countryList[index].countryImg)),
+                    /*gradient: LinearGradient(
                       colors: [
                         Colors.white.withOpacity(.5),
                         Colors.black,
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                    ),
+                    ),*/
                   ),
                   height: 200,
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: 5,
+                      left: 10,
+                      right: 10,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          countryList[index].countryName,
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Capital City: ${countryList[index].countryCapital}',
+                          style: TextStyle(color: Colors.black54, fontSize: 16),
+                        )
+                      ],
+                    ),
+                    height: 50,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white.withOpacity(.2),
+                          Colors.white60,
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
