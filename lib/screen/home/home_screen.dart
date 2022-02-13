@@ -70,12 +70,14 @@ class HomeScreen extends StatelessWidget {
                       offset: Offset(0, 3), // changes position of shadow
                     ),
                   ],
+
                 ),
                 // child: Image.asset(
                 //   ,
                 //   fit: BoxFit.cover,
                 // ),
               ),
+
             ),
           ),
           Expanded(
@@ -99,36 +101,48 @@ class HomeScreen extends StatelessWidget {
                       end: Alignment.bottomCenter,
                     ),*/
                   ),
-                  height: 200,
+                  height: 300,
                   alignment: Alignment.bottomCenter,
                   child: Container(
+
                     padding: EdgeInsets.only(
                       top: 5,
                       left: 10,
                       right: 10,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
                       children: [
-                        Text(
-                          countryList[index].countryName,
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              countryList[index].countryName,
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'Capital City: ${countryList[index].countryCapital}',
+                              style: TextStyle(color: Colors.black54, fontSize: 16),
+                            ),
+
+                          ],
                         ),
-                        Text(
-                          'Capital City: ${countryList[index].countryCapital}',
-                          style: TextStyle(color: Colors.black54, fontSize: 16),
-                        ),
-                        // Text(
-                        //   'Population: ${countryList[index].countryPopulation}',
-                        //   style: TextStyle(color: Colors.black54, fontSize: 16),
-                        //
-                        // ),
+
+                           Column(
+                             crossAxisAlignment: CrossAxisAlignment.end,
+                             children: [
+                               Text(
+                                  'Population: ${countryList[index].countryPopulation}',
+                                  style: TextStyle(color: Colors.black54, fontSize: 16),
+                                ),
+                             ],
+                           ),
                       ],
                     ),
-                    height: 50,
+
+                    height: 100,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
